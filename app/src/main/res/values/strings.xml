@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Game</string>
+    <string name="msg_winner">Поздравляем, %s \nВы выиграли!</string>
+    <string name="msg_draw">Ничья</string>
 </resources>
