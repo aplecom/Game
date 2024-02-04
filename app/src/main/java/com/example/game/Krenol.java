@@ -1,7 +1,7 @@
 package com.example.game;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.res.Resources;
+
 
 import android.os.Bundle;
 import android.view.View;
@@ -85,7 +85,6 @@ public class Krenol extends AppCompatActivity {
         }
 
         if (isBoardFull()) {
-            result.setText(R.string.msg_draw);
             gameOver = true;
         }
     }
@@ -99,4 +98,11 @@ public class Krenol extends AppCompatActivity {
         result.setText(R.string.msg_draw);
         return true;
     }
-}
+
+    public void clickRestart(View view) {
+        result.setText("");
+        gameOver=false;
+        for (int i = 0; i < buttons.length; i++)
+            buttons[i].setText("");
+        }
+    }

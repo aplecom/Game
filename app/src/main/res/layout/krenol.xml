@@ -6,6 +6,18 @@
     android:background="@color/black"
     tools:context=".Krenol">
 
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="15dp"
+        android:text=""
+        android:textSize="48sp"
+        android:textColor="@color/white" />
+
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,7 +61,7 @@
 
             <Button
                 android:id="@+id/button4"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_margin="5dp"
                 android:background="@android:color/white"
@@ -58,7 +70,7 @@
 
             <Button
                 android:id="@+id/button5"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_margin="5dp"
                 android:background="@android:color/white"
@@ -67,7 +79,7 @@
 
             <Button
                 android:id="@+id/button6"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_margin="5dp"
                 android:background="@android:color/white"
@@ -81,7 +93,7 @@
 
             <Button
                 android:id="@+id/button7"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_margin="5dp"
                 android:background="@android:color/white"
@@ -90,7 +102,7 @@
 
             <Button
                 android:id="@+id/button8"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_margin="5dp"
                 android:background="@android:color/white"
@@ -99,7 +111,7 @@
 
             <Button
                 android:id="@+id/button9"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_margin="5dp"
                 android:background="@android:color/white"
@@ -108,14 +120,16 @@
         </TableRow>
     </TableLayout>
 
-    <TextView
-        android:id="@+id/result"
-        android:text="text"
-        android:textColor="@color/white"
-       android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
+    <Button
+        android:id="@+id/restart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        />
+        android:layout_margin="20dp"
+
+        android:onClick="clickRestart"
+        android:textSize="40sp"
+        android:text="Заново"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
