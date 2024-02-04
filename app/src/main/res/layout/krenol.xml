@@ -21,7 +21,7 @@
                 android:layout_height="120dp"
                 android:layout_margin="5dp"
                 android:background="@android:color/white"
-                android:onClick="clickButton1"
+                android:onClick="clickButton"
                 android:textSize="48sp" />
 
             <Button
@@ -30,7 +30,7 @@
                 android:layout_height="120dp"
                 android:layout_margin="5dp"
                 android:background="@android:color/white"
-                android:onClick="clickButton2"
+                android:onClick="clickButton"
                 android:textSize="48sp" />
 
             <Button
@@ -39,7 +39,7 @@
                 android:layout_height="120dp"
                 android:layout_margin="5dp"
                 android:background="@android:color/white"
-                android:onClick="clickButton3"
+                android:onClick="clickButton"
                 android:textSize="48sp" />
         </TableRow>
 
@@ -53,7 +53,7 @@
                 android:layout_height="120dp"
                 android:layout_margin="5dp"
                 android:background="@android:color/white"
-                android:onClick="clickButton4"
+                android:onClick="clickButton"
                 android:textSize="48sp" />
 
             <Button
@@ -62,7 +62,7 @@
                 android:layout_height="120dp"
                 android:layout_margin="5dp"
                 android:background="@android:color/white"
-                android:onClick="clickButton5"
+                android:onClick="clickButton"
                 android:textSize="48sp" />
 
             <Button
@@ -71,7 +71,7 @@
                 android:layout_height="120dp"
                 android:layout_margin="5dp"
                 android:background="@android:color/white"
-                android:onClick="clickButton6"
+                android:onClick="clickButton"
                 android:textSize="48sp" />
         </TableRow>
 
@@ -85,7 +85,7 @@
                 android:layout_height="120dp"
                 android:layout_margin="5dp"
                 android:background="@android:color/white"
-                android:onClick="clickButton7"
+                android:onClick="clickButton"
                 android:textSize="48sp" />
 
             <Button
@@ -94,7 +94,7 @@
                 android:layout_height="120dp"
                 android:layout_margin="5dp"
                 android:background="@android:color/white"
-                android:onClick="clickButton8"
+                android:onClick="clickButton"
                 android:textSize="48sp" />
 
             <Button
@@ -103,7 +103,7 @@
                 android:layout_height="120dp"
                 android:layout_margin="5dp"
                 android:background="@android:color/white"
-                android:onClick="clickButton9"
+                android:onClick="clickButton"
                 android:textSize="48sp" />
         </TableRow>
     </TableLayout>
