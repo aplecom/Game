@@ -3,6 +3,7 @@ package com.example.game;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +16,7 @@ import java.util.Random;
 
 public class Krenol extends AppCompatActivity {
 
-    MediaPlayer mediaPlayerStep,mediaPlayerWin;
+    MediaPlayer mediaPlayerStep,mediaPlayerWin,mediaRestart;
     private Button[] buttons = new Button[9];
     private static final String CROSS = "X",ZERO = "0";
     private boolean playerTurn = true; //  чей ход , true - игрок
@@ -35,6 +36,7 @@ public class Krenol extends AppCompatActivity {
         }
         mediaPlayerWin =  MediaPlayer.create(this,R.raw.sound_win);
         mediaPlayerStep = MediaPlayer.create(this,R.raw.sound_step);
+        mediaRestart = MediaPlayer.create(this,R.raw.sound_btn);
         result = findViewById(R.id.result);
         pointsPC = findViewById(R.id.pointsPC);
         pointsPlayer = findViewById(R.id.pointsPlayer);
@@ -116,10 +118,13 @@ public class Krenol extends AppCompatActivity {
     }
 
     public void clickRestart(View view) {
+        Animation fadeAnimation = AnimationUtils.loadAnimation(this, R.anim.fade);
+        view.startAnimation(fadeAnimation);
         result.setText("");
         gameOver=false;
         for (int i = 0; i < buttons.length; i++)
             buttons[i].setText("");
+        mediaRestart.start();
         }
 
     private void updatePoints(String player) {
@@ -146,4 +151,10 @@ public class Krenol extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Krenol.this,MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

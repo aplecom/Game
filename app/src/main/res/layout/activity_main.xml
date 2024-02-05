@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_menu"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/bamf_italic4"
+        android:text=""
+        android:hint="Player name"
+        android:textColorHint="#80FFFFFF"
+        android:textColor="#FFFFFF"
+    android:textSize="30sp" />
+
+
+    <LinearLayout
+        android:layout_width="399dp"
+        android:layout_height="295dp"
+        android:layout_below="@+id/login"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_marginStart="5dp">
+
+        <Button
+            android:id="@+id/buttonOnline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/gradient"
+            android:onClick="clickOnline"
+            android:text="Онлайн" />
+
+        <Button
+            android:id="@+id/buttonSingl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/gradient"
+            android:onClick="clickSingle"
+            android:text="Одиночная" />
+
+        <Button
+            android:id="@+id/buttonDouble"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/gradient"
+            android:onClick="clickDouble"
+            android:text="На двоих" />
+    </LinearLayout>
+</RelativeLayout>
