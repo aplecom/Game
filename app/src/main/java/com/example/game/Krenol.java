@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -16,8 +18,10 @@ public class Krenol extends AppCompatActivity {
     private static final String CROSS = "X",ZERO = "0";
     private boolean playerTurn = true; //  чей ход , true - игрок
     private boolean gameOver = false;
+    private int[] winningCombination; // поле для хранения победной комбинации
 
-    private TextView result;
+    private TextView result,pointsPC,pointsPlayer;
+    private int pointsOfPC,pointsOfPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +33,11 @@ public class Krenol extends AppCompatActivity {
         }
 
         result = findViewById(R.id.result);
+        pointsPC = findViewById(R.id.pointsPC);
+        pointsPlayer = findViewById(R.id.pointsPlayer);
+        updatePointsTextViews();
     }
+
 
 
     public void clickButton(View view) {
@@ -58,9 +66,9 @@ public class Krenol extends AppCompatActivity {
 
     private boolean checkPlayerWin(String player) {
         int[][] WIN_COMBINATIONS = {
-                {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // Горизонтальные
-                {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // Вертикальные
-                {0, 4, 8}, {2, 4, 6}             // Диагональные
+                {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // горизонтальные
+                {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // вертикальные
+                {0, 4, 8}, {2, 4, 6}             // диагональные
         };
 
         for (int[] winCombo : WIN_COMBINATIONS) {
@@ -71,6 +79,8 @@ public class Krenol extends AppCompatActivity {
 
             if (!text1.isEmpty() && text1.equals(text2) && text2.equals(text3) && text1.equals(player)) {
                 result.setText(getResources().getString(R.string.msg_winner, player));
+                winningCombination = winCombo;
+                updatePoints(player);
                 return true;
             }
 
@@ -81,6 +91,7 @@ public class Krenol extends AppCompatActivity {
     private void checkWinner(String player) {
         if (checkPlayerWin(player)) {
             gameOver = true;
+            endGameEffects();
             return;
         }
 
@@ -105,4 +116,29 @@ public class Krenol extends AppCompatActivity {
         for (int i = 0; i < buttons.length; i++)
             buttons[i].setText("");
         }
+
+    private void updatePoints(String player) {
+        if (player.equals(CROSS)) {
+            pointsOfPlayer++;
+        } else if (player.equals(ZERO)) {
+            pointsOfPC++;
+        }
+        updatePointsTextViews();
     }
+
+    private void updatePointsTextViews() {
+        pointsPlayer.setText(getString(R.string.points_player, pointsOfPlayer));
+        pointsPC.setText(getString(R.string.points_pc, pointsOfPC));
+    }
+
+    private void endGameEffects() {
+        Animation fadeAnimation = AnimationUtils.loadAnimation(this, R.anim.fade);
+
+
+            for (int index : winningCombination) {
+                buttons[index].startAnimation(fadeAnimation);
+
+        }
+    }
+
+}
