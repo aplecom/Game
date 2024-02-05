@@ -3,6 +3,7 @@ package com.example.game;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -14,6 +15,7 @@ import java.util.Random;
 
 public class Krenol extends AppCompatActivity {
 
+    MediaPlayer mediaPlayerStep,mediaPlayerWin;
     private Button[] buttons = new Button[9];
     private static final String CROSS = "X",ZERO = "0";
     private boolean playerTurn = true; //  чей ход , true - игрок
@@ -31,7 +33,8 @@ public class Krenol extends AppCompatActivity {
             int buttonId = getResources().getIdentifier("button" + (i + 1), "id", getPackageName());
             buttons[i] = findViewById(buttonId);
         }
-
+        mediaPlayerWin =  MediaPlayer.create(this,R.raw.sound_win);
+        mediaPlayerStep = MediaPlayer.create(this,R.raw.sound_step);
         result = findViewById(R.id.result);
         pointsPC = findViewById(R.id.pointsPC);
         pointsPlayer = findViewById(R.id.pointsPlayer);
@@ -41,8 +44,10 @@ public class Krenol extends AppCompatActivity {
 
 
     public void clickButton(View view) {
+
         Button clickedButton = (Button) view;
         if (clickedButton.getText().toString().isEmpty() && !gameOver) {
+            mediaPlayerStep.start();
             if (playerTurn) {
                 clickedButton.setText(CROSS);
             }
@@ -133,7 +138,7 @@ public class Krenol extends AppCompatActivity {
 
     private void endGameEffects() {
         Animation fadeAnimation = AnimationUtils.loadAnimation(this, R.anim.fade);
-
+        mediaPlayerWin.start();
 
             for (int index : winningCombination) {
                 buttons[index].startAnimation(fadeAnimation);
