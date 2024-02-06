@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         view.startAnimation(fadeAnimation);
         Intent intent = new Intent(MainActivity.this, Krenol.class);
         startActivity(intent);
+        finish();
     }
 
     public void clickDouble(View view) {
