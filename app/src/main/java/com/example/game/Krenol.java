@@ -3,7 +3,10 @@ package com.example.game;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.app.backup.SharedPreferencesBackupHelper;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +28,8 @@ public class Krenol extends AppCompatActivity {
 
     private TextView result,pointsPC,pointsPlayer;
     private int pointsOfPC,pointsOfPlayer;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +45,14 @@ public class Krenol extends AppCompatActivity {
         result = findViewById(R.id.result);
         pointsPC = findViewById(R.id.pointsPC);
         pointsPlayer = findViewById(R.id.pointsPlayer);
+
+        sharedPreferences = this.getSharedPreferences("crossZero", Context.MODE_PRIVATE);// сохранение во всем приложение
+        editor = sharedPreferences.edit();
+
+        pointsOfPC = sharedPreferences.getInt("pointsOfPC",0);
+        pointsOfPlayer = sharedPreferences.getInt("pointsOfPlayer",0);
+
+
         updatePointsTextViews();
     }
 
@@ -137,6 +150,9 @@ public class Krenol extends AppCompatActivity {
     }
 
     private void updatePointsTextViews() {
+        editor.putInt("pointsOfPC",pointsOfPC);
+        editor.putInt("pointsOfPlayer",pointsOfPlayer);
+        editor.apply();
         pointsPlayer.setText(getString(R.string.points_player, pointsOfPlayer));
         pointsPC.setText(getString(R.string.points_pc, pointsOfPC));
     }
